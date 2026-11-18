@@ -1,0 +1,15 @@
+D:\projects_c#\aspnet\KazaNamaz\KN.Data\bin\Debug\net10.0\KN.Data.deps.json
+D:\projects_c#\aspnet\KazaNamaz\KN.Data\bin\Debug\net10.0\KN.Data.dll
+D:\projects_c#\aspnet\KazaNamaz\KN.Data\bin\Debug\net10.0\KN.Data.pdb
+D:\projects_c#\aspnet\KazaNamaz\KN.Data\bin\Debug\net10.0\KN.Core.dll
+D:\projects_c#\aspnet\KazaNamaz\KN.Data\bin\Debug\net10.0\KN.Core.pdb
+D:\projects_c#\aspnet\KazaNamaz\KN.Data\obj\Debug\net10.0\KN.Data.csproj.AssemblyReference.cache
+D:\projects_c#\aspnet\KazaNamaz\KN.Data\obj\Debug\net10.0\KN.Data.GeneratedMSBuildEditorConfig.editorconfig
+D:\projects_c#\aspnet\KazaNamaz\KN.Data\obj\Debug\net10.0\KN.Data.AssemblyInfoInputs.cache
+D:\projects_c#\aspnet\KazaNamaz\KN.Data\obj\Debug\net10.0\KN.Data.AssemblyInfo.cs
+D:\projects_c#\aspnet\KazaNamaz\KN.Data\obj\Debug\net10.0\KN.Data.csproj.CoreCompileInputs.cache
+D:\projects_c#\aspnet\KazaNamaz\KN.Data\obj\Debug\net10.0\KN.Data.csproj.Up2Date
+D:\projects_c#\aspnet\KazaNamaz\KN.Data\obj\Debug\net10.0\KN.Data.dll
+D:\projects_c#\aspnet\KazaNamaz\KN.Data\obj\Debug\net10.0\refint\KN.Data.dll
+D:\projects_c#\aspnet\KazaNamaz\KN.Data\obj\Debug\net10.0\KN.Data.pdb
+D:\projects_c#\aspnet\KazaNamaz\KN.Data\obj\Debug\net10.0\ref\KN.Data.dll

@@ -1,0 +1,37 @@
+{
+  "Files": [
+    {
+      "Id": "D:\\projects_c#\\aspnet\\KazaNamaz\\KN.UI\\obj\\Debug\\net10.0\\scopedcss\\projectbundle\\KN.UI.bundle.scp.css",
+      "PackagePath": "staticwebassets\\KN.UI.roe9qt7r9e.bundle.scp.css"
+    },
+    {
+      "Id": "D:\\projects_c#\\aspnet\\KazaNamaz\\KN.UI\\wwwroot\\background.png",
+      "PackagePath": "staticwebassets\\background.png"
+    },
+    {
+      "Id": "D:\\projects_c#\\aspnet\\KazaNamaz\\KN.UI\\wwwroot\\exampleJsInterop.js",
+      "PackagePath": "staticwebassets\\exampleJsInterop.js"
+    },
+    {
+      "Id": "obj\\Debug\\net10.0\\staticwebassets\\msbuild.KN.UI.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssetEndpoints.props"
+    },
+    {
+      "Id": "obj\\Debug\\net10.0\\staticwebassets\\msbuild.KN.UI.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net10.0\\staticwebassets\\msbuild.build.KN.UI.props",
+      "PackagePath": "build\\KN.UI.props"
+    },
+    {
+      "Id": "obj\\Debug\\net10.0\\staticwebassets\\msbuild.buildMultiTargeting.KN.UI.props",
+      "PackagePath": "buildMultiTargeting\\KN.UI.props"
+    },
+    {
+      "Id": "obj\\Debug\\net10.0\\staticwebassets\\msbuild.buildTransitive.KN.UI.props",
+      "PackagePath": "buildTransitive\\KN.UI.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

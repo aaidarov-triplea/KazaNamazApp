@@ -1,0 +1,134 @@
+﻿@using KN.Core.Enums
+@model KN.Core.Models.KazaSummary?
+@{ ViewData["Title"] = "Каза намазы"; }
+
+@if (TempData["Success"] is string successMsg)
+{
+    <div class="alert alert-success">@successMsg</div>
+}
+@if (TempData["Error"] is string errorMsg)
+{
+    <div class="alert alert-danger">@errorMsg</div>
+}
+
+@if (Model is null)
+{
+    <div class="text-center mt-5">
+        <h1 class="display-5">Каза намазы</h1>
+        <p class="lead">Ведите учёт пропущенных намазов и следите за остатком.</p>
+        <a class="btn btn-primary" asp-controller="Account" asp-action="Login">Войти</a>
+        <a class="btn btn-outline-primary" asp-controller="Account" asp-action="Register">Регистрация</a>
+    </div>
+}
+else
+{
+    <h2>Каза намазы</h2>
+
+    <div class="alert alert-info">
+        Период всего: <strong>@Model.TotalDays</strong> дн.
+        &nbsp;|&nbsp; Осталось прочитать: <strong>@Model.RemainingPrayers</strong> из @Model.TotalPrayers
+    </div>
+
+    <div class="row g-3 mb-4">
+        @foreach (var p in Model.Prayers)
+        {
+            var percent = p.Total > 0 ? Math.Min(100, p.Done * 100 / p.Total) : 0;
+            <div class="col-6 col-md-4 col-lg-2">
+                <div class="card h-100">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">@p.Type.ToDisplayName()</h5>
+                        <div class="display-6">@p.Remaining</div>
+                        <div class="text-muted small">осталось из @p.Total</div>
+                        <div class="progress my-2" style="height:6px">
+                            <div class="progress-bar" style="width:@percent%"></div>
+                        </div>
+
+                        @if (p.Remaining > 0)
+                        {
+                            <form asp-controller="Kaza" asp-action="AddRead" method="post" class="d-flex gap-1">
+                                <input type="hidden" name="prayer" value="@((int)p.Type)" />
+                                <input type="number" name="count" value="1" min="1" max="@p.Remaining"
+                                       class="form-control form-control-sm" />
+                                <button type="submit" class="btn btn-sm btn-success">−</button>
+                            </form>
+                        }
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+    <div class="row g-4">
+        <div class="col-lg-6">
+            <h4>Периоды</h4>
+            <form asp-controller="Kaza" asp-action="AddPeriod" method="post" class="row g-2 mb-3">
+                <div class="col">
+                    <label class="form-label small mb-0">С</label>
+                    <input type="date" name="start" class="form-control" required />
+                </div>
+                <div class="col">
+                    <label class="form-label small mb-0">По</label>
+                    <input type="date" name="end" class="form-control" required />
+                </div>
+                <div class="col-auto d-flex align-items-end">
+                    <button type="submit" class="btn btn-primary">Добавить</button>
+                </div>
+            </form>
+
+            @if (Model.Periods.Count == 0)
+            {
+                <p class="text-muted">Периодов пока нет. Добавьте первый.</p>
+            }
+            else
+            {
+                <table class="table table-sm align-middle">
+                    <thead><tr><th>Период</th><th>Дней</th><th></th></tr></thead>
+                    <tbody>
+                    @foreach (var per in Model.Periods)
+                    {
+                        <tr>
+                            <td>@per.StartDate.ToString("dd.MM.yyyy") – @per.EndDate.ToString("dd.MM.yyyy")</td>
+                            <td>@per.Days</td>
+                            <td class="text-end">
+                                <form asp-controller="Kaza" asp-action="DeletePeriod" asp-route-id="@per.Id" method="post"
+                                      onsubmit="return confirm('Удалить период?');">
+                                    <button type="submit" class="btn btn-sm btn-outline-danger">Удалить</button>
+                                </form>
+                            </td>
+                        </tr>
+                    }
+                    </tbody>
+                </table>
+            }
+        </div>
+
+        <div class="col-lg-6">
+            <h4>Последние отметки</h4>
+            @if (Model.RecentLogs.Count == 0)
+            {
+                <p class="text-muted">Пока ничего не отмечено.</p>
+            }
+            else
+            {
+                <table class="table table-sm align-middle">
+                    <thead><tr><th>Когда</th><th>Намаз</th><th>Кол-во</th><th></th></tr></thead>
+                    <tbody>
+                    @foreach (var log in Model.RecentLogs)
+                    {
+                        <tr>
+                            <td>@log.CreatedAt.ToLocalTime().ToString("dd.MM.yyyy HH:mm")</td>
+                            <td>@log.PrayerType.ToDisplayName()</td>
+                            <td>@log.Count</td>
+                            <td class="text-end">
+                                <form asp-controller="Kaza" asp-action="DeleteLog" asp-route-id="@log.Id" method="post">
+                                    <button type="submit" class="btn btn-sm btn-outline-secondary">Отменить</button>
+                                </form>
+                            </td>
+                        </tr>
+                    }
+                    </tbody>
+                </table>
+            }
+        </div>
+    </div>
+}

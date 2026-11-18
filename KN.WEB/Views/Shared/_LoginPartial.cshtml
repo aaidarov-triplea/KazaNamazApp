@@ -1,0 +1,23 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using KN.Core.Entities
+@inject SignInManager<AppUser> SignInManager
+@inject UserManager<AppUser> UserManager
+
+<ul class="navbar-nav">
+    @if (SignInManager.IsSignedIn(User))
+    {
+        <li class="nav-item">
+            <span class="nav-link text-dark">Привет, @UserManager.GetUserName(User)</span>
+        </li>
+        <li class="nav-item">
+            <form asp-controller="Account" asp-action="Logout" method="post">
+                <button type="submit" class="nav-link btn btn-link text-dark">Выйти</button>
+            </form>
+        </li>
+    }
+    else
+    {
+        <li class="nav-item"><a class="nav-link text-dark" asp-controller="Account" asp-action="Login">Вход</a></li>
+        <li class="nav-item"><a class="nav-link text-dark" asp-controller="Account" asp-action="Register">Регистрация</a></li>
+    }
+</ul>
